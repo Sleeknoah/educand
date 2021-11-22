@@ -28,8 +28,29 @@ class _SplashState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Container(
-          child: Image.asset('assets/icon/icon.png', width: 177, height: 98),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child:
+                  Image.asset('assets/icon/logo.png', width: 204, height: 47),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 64.0),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'POWERED BY',
+                    style: TextStyle(
+                      color: Color(0xFF6F6F6F),
+                      fontSize: 14,
+                      letterSpacing: 5.0,
+                    ),
+                  ),
+                  Image.asset('assets/icon/icon.png', width: 131, height: 74),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

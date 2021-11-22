@@ -18,3 +18,4 @@ final c13 = Color(0xFFFBD494);
 final c14 = Color(0xFF593B09);
 final c15 = Color(0xFF4B86A1);
 final c30 = Color(0xFFFBAE30);
+final c31 = Color(0xFFDD8E0E);

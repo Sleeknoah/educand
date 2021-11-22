@@ -12,6 +12,8 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   String photo = "";
+  String fName;
+  String lName;
   var username = TextEditingController();
   var email = TextEditingController();
   var phone = TextEditingController();
@@ -42,6 +44,8 @@ class _ProfilePageState extends State<ProfilePage> {
       rank.text = preferences.getString("rank");
       testTaken.text = preferences.getString("test_taken") ?? "";
       score.text = preferences.getString("score") ?? "";
+      fName = preferences.getString("first_name").split("")[0];
+      lName = preferences.getString("last_name").split("")[0];
     });
   }
 
@@ -98,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       radius: 50,
                       backgroundColor: c2,
                       child: Text(
-                        'EEI',
+                        "${fName}${lName}",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 20,
@@ -106,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ),
                       backgroundImage:
-                          NetworkImage('https://ipsm.org.ng/educand/' + photo),
+                          NetworkImage('https://ipsm.org.ng/educand/{$photo}'),
                     ),
                   ),
                   Padding(
@@ -120,12 +124,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color(0xFFFF7600),
+                            color: Color(0xFFFFB100),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         labelText: 'Fullname',
+                        labelStyle: TextStyle(
+                          color: Color(0xFFFFB100),
+                        ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 14.0,
                           horizontal: 16.0,
@@ -150,12 +157,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color(0xFFFF7600),
+                            color: Color(0xFFFFB100),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         labelText: 'Username',
+                        labelStyle: TextStyle(
+                          color: Color(0xFFFFB100),
+                        ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 14.0,
                           horizontal: 16.0,
@@ -180,12 +190,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color(0xFFFF7600),
+                            color: Color(0xFFFFB100),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         labelText: 'Email',
+                        labelStyle: TextStyle(
+                          color: Color(0xFFFFB100),
+                        ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 14.0,
                           horizontal: 16.0,
@@ -209,7 +222,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: InputDecoration(
                         filled: false,
                         border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xFFFFB100),
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
                         labelText: 'Phone Number',
+                        labelStyle: TextStyle(
+                          color: Color(0xFFFFB100),
+                        ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 14.0,
                           horizontal: 16.0,
@@ -234,12 +257,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color(0xFFFF7600),
+                            color: Color(0xFFFFB100),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         labelText: 'State',
+                        labelStyle: TextStyle(
+                          color: Color(0xFFFFB100),
+                        ),
                         contentPadding: const EdgeInsets.symmetric(
                           vertical: 14.0,
                           horizontal: 16.0,
@@ -262,7 +288,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             await FlutterSession().get("userProfile");
 
                         http.Response response = await http.post(
-                            'https://ipsm.org.ng/educand/set_profile.php',
+                            'https://ozmites.com/educand/set_profile.php',
                             body: {
                               'fullname': name.text,
                               'username': username.text,
@@ -283,7 +309,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             _showSuccessDialog("Changes Saved Successfully!");
                           }
                           http.Response response2 = await http.post(
-                              'https://ipsm.org.ng/educand/get_profile.php',
+                              'https://ozmites.com/educand/get_profile.php',
                               body: {
                                 'username': username.text,
                               });

@@ -19,6 +19,8 @@ class _AccountState extends State<Account> {
   Future<Map> myUserProfile;
   String name = "";
   String photo = "";
+  String fName = "";
+  String lName = "";
 
   @override
   void initState() {
@@ -32,6 +34,8 @@ class _AccountState extends State<Account> {
     setState(() {
       name = preferences.getString("full_name");
       photo = preferences.getString("photo") ?? '';
+      fName = preferences.getString("first_name").split("")[0];
+      lName = preferences.getString("last_name").split("")[0];
     });
   }
 
@@ -87,7 +91,7 @@ class _AccountState extends State<Account> {
                               radius: 50,
                               backgroundColor: c2,
                               child: Text(
-                                'EEI',
+                                "${fName}${lName}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,

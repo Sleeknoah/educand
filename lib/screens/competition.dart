@@ -1,5 +1,6 @@
 import 'package:educand/widgets/submitbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Competition extends StatefulWidget {
   @override
@@ -56,7 +57,7 @@ class _CompetitionState extends State<Competition> {
                 Padding(
                   padding: const EdgeInsets.only(top: 60),
                   child: Text(
-                    'Registration is \nclosed for now!',
+                    'Registration is \n currently open!',
                     style: TextStyle(
                       fontSize: 25,
                       color: Color(0xFF442B76),
@@ -68,7 +69,7 @@ class _CompetitionState extends State<Competition> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'We are no longer receiving registration for Spell&Thrill! Competition at this time. Please check back another time',
+                    'We are currently receiving registrations for Spell&Thrill! Competition. Please click the button to enroll',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF6F6F6F),
@@ -84,8 +85,10 @@ class _CompetitionState extends State<Competition> {
                     bottom: 30.0,
                   ),
                   child: SubmitButton(
-                    title: "KNOW MORE ABOUT EEI",
-                    act: () async {},
+                    title: "Register Now",
+                    act: () async {
+                      launch('https://ozmites.com/printing/spell-thrill/');
+                    },
                   ),
                 ),
               ],

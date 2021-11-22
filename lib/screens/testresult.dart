@@ -73,7 +73,7 @@ class _TestResultsState extends State<TestResults> {
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 16.0,
-                  horizontal: 16.0,
+                  horizontal: 24.0,
                 ),
                 child: Text(
                   "We know you're a champion. Practice and test your skills in the practice mode area and attempt again. We know you can do a lot better!",

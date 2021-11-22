@@ -254,7 +254,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       _showRegDialog();
 
                       http.Response response = await http.post(
-                          'https://ipsm.org.ng/educand/process_register.php',
+                          'https://ozmites.com/educand/process_register.php',
                           body: {
                             'fullname': fullNameText,
                             'username': usernameText,
@@ -341,7 +341,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(right: 15, left: 15),
+                      padding: EdgeInsets.only(left: 15),
                       child: Text(
                         text,
                         style: TextStyle(
@@ -378,11 +378,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(right: 20, left: 20),
+                      padding: EdgeInsets.only(left: 20),
                       child: Text(
-                        "Processing ...",
+                        "Logging in...",
                         style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                       ),

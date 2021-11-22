@@ -7,6 +7,7 @@ import 'package:educand/screens/testresult.dart';
 import 'package:educand/utils/loading.dart';
 import 'package:educand/values/colors.dart';
 import 'package:educand/widgets/submitbutton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:flutter_text_to_speech/flutter_text_to_speech.dart';
@@ -502,31 +503,19 @@ class _PHomeState extends State<PHome> {
                               act: () {
                                 if (equalsIgnoreCase(fnController.text,
                                     _wordList[wordcount]["word"])) {
-                                  if (wordcount > 8) {
-                                    _correct++;
-                                    _sessionDialog(
-                                        _correct.toString(), _wrong.toString());
-                                  } else {
-                                    FocusScope.of(context).unfocus();
-                                    fnController.clear();
-                                    _correct++;
-                                    _correctDialog("You answered correctly!");
-                                    wordcount = wordcount + 1;
-                                    splitcount = 0;
-                                  }
+                                  FocusScope.of(context).unfocus();
+                                  fnController.clear();
+                                  _correct++;
+                                  _correctDialog("You answered correctly!");
+                                  wordcount = wordcount + 1;
+                                  splitcount = 0;
                                 } else {
-                                  if (wordcount > 8) {
-                                    _wrong++;
-                                    _sessionDialog(
-                                        _correct.toString(), _wrong.toString());
-                                  } else {
-                                    _wrong++;
-                                    FocusScope.of(context).unfocus();
-                                    fnController.clear();
-                                    _wrongDialog(_wordList[wordcount]["word"]);
-                                    wordcount = wordcount + 1;
-                                    splitcount = 0;
-                                  }
+                                  _wrong++;
+                                  FocusScope.of(context).unfocus();
+                                  fnController.clear();
+                                  _wrongDialog(_wordList[wordcount]["word"]);
+                                  wordcount = wordcount + 1;
+                                  splitcount = 0;
                                 }
                               }),
                           //   Padding(
@@ -632,12 +621,39 @@ class _PHomeState extends State<PHome> {
                 body: Center(
                   child: Padding(
                     padding: EdgeInsets.only(right: 20, left: 20),
-                    child: Text(
-                      "... please wait ...",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.white),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      height: MediaQuery.of(context).size.height / 6,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
+                        color: Colors.black,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 24.0,
+                            ),
+                            child: Container(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: c2,
+                                ),
+                                width: 32,
+                                height: 32),
+                          ),
+                          Text(
+                            "Please wait …",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -681,8 +697,8 @@ class _PHomeState extends State<PHome> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(16.0))),
         content: Container(
-          height: MediaQuery.of(context).size.height / 3,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -727,7 +743,7 @@ class _PHomeState extends State<PHome> {
         ),
       ),
     ).then((value) {
-      _sessionDialog(_correct.toString(), _wrong.toString());
+      _sessionDialog(_correct, _wrong);
     });
   }
 
@@ -739,8 +755,8 @@ class _PHomeState extends State<PHome> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(16.0))),
         content: Container(
-          height: MediaQuery.of(context).size.height / 3.4,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -792,13 +808,18 @@ class _PHomeState extends State<PHome> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Text(
-                        capitalize(text),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: c1,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 8.0,
+                        ),
+                        child: Text(
+                          capitalize(text),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: c1,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
@@ -830,9 +851,9 @@ class _PHomeState extends State<PHome> {
             borderRadius: BorderRadius.all(Radius.circular(16.0))),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 2.8,
           margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -886,13 +907,18 @@ class _PHomeState extends State<PHome> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Text(
-                      capitalize(text),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: c1,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 8.0,
+                      ),
+                      child: Text(
+                        capitalize(text),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: c1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
@@ -914,11 +940,12 @@ class _PHomeState extends State<PHome> {
     });
   }
 
-  _sessionDialog(String text, String wrong) async {
+  _sessionDialog(int correct, int wrong) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString("questions", "10");
-    preferences.setString("correct", text);
-    preferences.setString("incorrect", wrong);
+    int total = correct + wrong;
+    preferences.setString("questions", total.toString());
+    preferences.setString("correct", correct.toString());
+    preferences.setString("incorrect", wrong.toString());
     _timer.cancel();
     await showDialog(
       context: context,
@@ -928,8 +955,8 @@ class _PHomeState extends State<PHome> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(16.0))),
         content: Container(
-          height: MediaQuery.of(context).size.height / 2.3,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.asset(
@@ -981,33 +1008,36 @@ class _PHomeState extends State<PHome> {
                 ),
                 color: Colors.orange[700],
                 onPressed: () {
+                  Navigator.of(context).pop();
                   widget.mode == "test"
                       ? saveCred()
                       : widget.mode == "scrabbled"
-                          ? Navigator.push(
+                          ? Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => PracticeResults(
                                   mode: "scrabbled",
                                 ),
                               ),
-                            )
+                              ModalRoute.withName("/Home"))
                           : widget.mode == "incomplete"
-                              ? Navigator.push(
+                              ? Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => PracticeResults(
                                       mode: "incomplete",
                                     ),
                                   ),
+                                  ModalRoute.withName("/Home"),
                                 )
-                              : Navigator.push(
+                              : Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => PracticeResults(
                                       mode: "standard",
                                     ),
                                   ),
+                                  ModalRoute.withName("/Home"),
                                 );
                 },
                 child: Padding(
@@ -1038,11 +1068,11 @@ class _PHomeState extends State<PHome> {
   Future<List> _getWords() async {
     if (widget.mode == "test") {
       http.Response response =
-          await http.post('https://ipsm.org.ng/educand/get_words.php?test');
+          await http.post('https://ozmites.com/educand/get_words.php?test');
       return jsonDecode(response.body);
     } else {
       http.Response response =
-          await http.post('https://ipsm.org.ng/educand/get_words.php?practice');
+          await http.post('https://ozmites.com/educand/get_words.php?practice');
       return jsonDecode(response.body);
     }
   }
@@ -1102,7 +1132,7 @@ class _PHomeState extends State<PHome> {
     print(userProfile['total_tests']);
 
     http.Response response =
-        await http.post('https://ipsm.org.ng/educand/set_profile.php', body: {
+        await http.post('https://ozmites.com/educand/set_profile.php', body: {
       'username': userProfile['username'],
       'fullname': userProfile['fullname'],
       'email': userProfile['email'],
@@ -1114,15 +1144,15 @@ class _PHomeState extends State<PHome> {
     });
 
     if (response.statusCode == 200) {
-      http.Response response =
-          await http.post('https://ipsm.org.ng/educand/get_profile.php', body: {
+      http.Response profileResponse =
+          await http.post('https://ozmites.com/educand/get_profile.php', body: {
         'username': userProfile['username'],
       });
 
-      await FlutterSession().set("userProfile", response.body);
+      await FlutterSession().set("userProfile", profileResponse.body);
       SharedPreferences preferences = await SharedPreferences.getInstance();
-      preferences.setString("score", _correct.toString());
-      preferences.setString("test_taken", totaltests.toString());
+      preferences.setString("score", userProfile['score']);
+      preferences.setString("total_tests", userProfile['total_tests']);
 
       Navigator.push(
         context,

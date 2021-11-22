@@ -71,9 +71,9 @@ class _ContactState extends State<Contact> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: GestureDetector(
-                    onTap: () => launch('https://wa.link/wuknal'),
+                    onTap: () => launch('https://mywa.link/g9vnrp7f'),
                     child: Text(
-                      'Whatsapp: \n+2347040060013',
+                      'Whatsapp: \n+2348131637672',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xFF442B76),

@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'player_model.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
+
+import 'player_model.dart';
 
 class GameModel with ChangeNotifier {
   String _diceVal = "init";

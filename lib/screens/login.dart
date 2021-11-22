@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       _showLoginDialog();
 
                       http.Response response = await http.post(
-                          'https://ipsm.org.ng/educand/process_login.php',
+                          'https://ozmites.com/educand/process_login.php',
                           body: {
                             'username': enteredUserText,
                             'password': enteredPassText
@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         print(response.body);
                         if (response.body == "success") {
                           http.Response response = await http.post(
-                              'https://ipsm.org.ng/educand/get_profile.php',
+                              'https://ozmites.com/educand/get_profile.php',
                               body: {
                                 'username': enteredUserText,
                               });
@@ -218,11 +218,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(right: 15, left: 15),
+                      padding: EdgeInsets.only(left: 15),
                       child: Text(
                         text,
                         style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 12,
                             fontWeight: FontWeight.normal,
                             color: Colors.grey),
                       ),
@@ -250,11 +250,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(right: 20, left: 20),
+                      padding: EdgeInsets.only(left: 20),
                       child: Text(
                         "Logging In ...",
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey),
                       ),
@@ -287,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Center(
                   child: Text(
                     "Registration Successful!",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -299,7 +299,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 16,
+                        fontSize: 12,
                         fontWeight: FontWeight.normal),
                   ),
                 ),

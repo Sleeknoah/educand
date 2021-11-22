@@ -97,7 +97,7 @@ class _PracticeState extends State<Practice> {
                   Container(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        'SPELL&THRILL! is an annual intervention based spelling competition project organized for both private and public primary and secondary schools in Nigeria.\n\nSPELL&THRILL! brings whole families together thereby helping to break intergenerational low educational and literacy skills.This has endeared SPELL&THRILL! as the leading literacy project of the new generation.\n\nIn the last seven (7) years, EEI has executed six (6) editions of SPELL&THRILL! successfully.',
+                        'SPELL&THRILL! is an annual intervention based spelling competition project organized for both private and public primary and secondary schools in Nigeria.\n\nSPELL&THRILL! brings whole families together thereby helping to break intergenerational low educational and literacy skills.This has endeared SPELL&THRILL! as the leading literacy project of the new generation.\n\nIn the last nine (9) years, EEI has executed six (6) editions of SPELL&THRILL! successfully.',
                         style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 13,

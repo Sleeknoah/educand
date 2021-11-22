@@ -26,20 +26,20 @@ class _SubmitButtonState extends State<SubmitButton> {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment(-1.0, 0.0),
-                end: Alignment(2.0, -2.0),
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
                 colors: [
                   Color(0xFFFF7600),
-                  Color(0xDDFF7600),
-                  Color(0xBBFF7600),
+                  Color(0xFFFF7600),
                   Color(0xFFFFB206),
-                  Color(0xEEFFB206),
+                  Color(0xFFFFB206),
+                  Color(0xFFFFB206),
                 ],
                 stops: [
                   0.28,
-                  0.48,
-                  0.68,
-                  0.85,
+                  0.35,
+                  0.58,
+                  0.75,
                   .98,
                 ]),
             borderRadius: BorderRadius.circular(5.0),

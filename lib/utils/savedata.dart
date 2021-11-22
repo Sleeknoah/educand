@@ -60,7 +60,7 @@ class SaveData {
 
   static void saveLastData(String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String fName = data.split(" ")[1];
-    prefs.setString("last_name", fName);
+    String lName = data.split(" ")[1];
+    prefs.setString("last_name", lName);
   }
 }

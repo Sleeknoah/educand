@@ -1,5 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:educand/screens/game_results.dart';
+import 'package:educand/utils/navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/restart_app.dart';
@@ -37,78 +39,78 @@ class PlayerModel with ChangeNotifier {
       // print("you won");
       audioCache.play('win.wav', mode: PlayerMode.LOW_LATENCY);
       won = true;
-      showDialog(
-          barrierDismissible: false,
-          context: _ctx,
-          builder: (BuildContext context) {
-            return Dialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)), //this right here
-              child: Container(
-                height: 250,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Yayyy! You won!",
-                        style: TextStyle(fontSize: 24),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        width: 320.0,
-                        child: RaisedButton(
-                          onPressed: () async {
-                            playerAmove = 0;
-                            playerBmove = 0;
-                            RestartWidget.restartApp(context);
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            "New Game",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          color: const Color(0xFF1BC0C5),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            );
-          });
+      Nav.routeReplacement(_ctx, GameResult());
+      // showDialog(
+      //     barrierDismissible: false,
+      //     context: _ctx,
+      //     builder: (BuildContext context) {
+      //       return Dialog(
+      //         shape: RoundedRectangleBorder(
+      //             borderRadius: BorderRadius.circular(20.0)), //this right here
+      //         child: Container(
+      //           height: 250,
+      //           child: Padding(
+      //             padding: const EdgeInsets.all(12.0),
+      //             child: Column(
+      //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //               crossAxisAlignment: CrossAxisAlignment.center,
+      //               children: [
+      //                 Text(
+      //                   "Yayyy! You won!",
+      //                   style: TextStyle(fontSize: 24),
+      //                   textAlign: TextAlign.center,
+      //                 ),
+      //                 SizedBox(
+      //                   width: 320.0,
+      //                   child: RaisedButton(
+      //                     onPressed: () async {
+      //                       playerAmove = 0;
+      //                       playerBmove = 0;
+      //                       RestartWidget.restartApp(context);
+      //                       Navigator.pop(context);
+      //                     },
+      //                     child: Text(
+      //                       "New Game",
+      //                       style: TextStyle(color: Colors.white),
+      //                     ),
+      //                     color: const Color(0xFF1BC0C5),
+      //                   ),
+      //                 )
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //       );
+      //     });
     }
     //laddermove
-    movePlayerA(6, 28, "made ethical use of information", "+");
+    movePlayerA(5, 27, "made ethical use of information", "+");
     movePlayerA(
-        30, 41, "used ICT skills to analyse and process information", "+");
+        29, 40, "used ICT skills to analyse and process information", "+");
     movePlayerA(
-        38, 74, "evaluated media content and confirmed its safety", "+");
+        37, 73, "evaluated media content and confirmed its safety", "+");
     movePlayerA(
-        70, 81, "ascertained reliability and validity of data analysis", "+");
-    movePlayerA(33, 45,
+        69, 80, "ascertained reliability and validity of data analysis", "+");
+    movePlayerA(32, 44,
         "confirmed that all the sources of information are credible", "+");
-    movePlayerA(49, 68,
+    movePlayerA(48, 67,
         "confirmed broadcast messages on Whatsapp before forwarding", "+");
     movePlayerA(
-        14,
-        32,
+        13,
+        31,
         "shared my views in ways that that encourage discourse and not arguments",
         "+");
-    movePlayerA(10, 20, "researched statements before sharing", "+");
+    movePlayerA(9, 19, "researched statements before sharing", "+");
     //snakeMove
+
     movePlayerA(
-        37, 4, "got angry easily and vented anger on people online", "-");
-    movePlayerA(
-        98, 12, "didn’t log out after using a public/borrowed device", "-");
-    movePlayerA(96, 85, "didn't create strong passwords", "-");
-    movePlayerA(89, 77, "didn’t confirm the source of the video shared", "-");
-    movePlayerA(29, 9, "shared controversial articles", "-");
-    movePlayerA(72, 42, "ooops!!!! The video shared is fake", "-");
-    movePlayerA(25, 7, "didn't researched a statement before sharing", "-");
-    movePlayerA(58, 39, "ooops!!!! The video shared is fake", "-");
+        97, 11, "didn’t log out after using a public/borrowed device", "-");
+    movePlayerA(95, 84, "didn't create strong passwords", "-");
+    movePlayerA(88, 76, "didn’t confirm the source of the video shared", "-");
+    movePlayerA(28, 8, "shared controversial articles", "-");
+    movePlayerA(71, 41, "ooops!!!! The video shared is fake", "-");
+    movePlayerA(24, 6, "didn't researched a statement before sharing", "-");
+    movePlayerA(57, 38, "ooops!!!! The video shared is fake", "-");
     notifyListeners();
   }
 
@@ -166,34 +168,32 @@ class PlayerModel with ChangeNotifier {
           });
     }
     //ladder
-    movePlayerB(6, 28, "made ethical use of information", "+");
+    movePlayerB(5, 27, "made ethical use of information", "+");
     movePlayerB(
-        30, 41, "used ICT skills to analyse and process information", "+");
+        29, 40, "used ICT skills to analyse and process information", "+");
     movePlayerB(
-        38, 74, "evaluated media content and confirmed its safety", "+");
+        37, 73, "evaluated media content and confirmed its safety", "+");
     movePlayerB(
-        70, 81, "ascertained reliability and validity of data analysis", "+");
-    movePlayerB(33, 45,
+        69, 80, "ascertained reliability and validity of data analysis", "+");
+    movePlayerB(32, 44,
         "confirmed that all the sources of information are credible", "+");
-    movePlayerB(49, 68,
+    movePlayerB(48, 67,
         "confirmed broadcast messages on Whatsapp before forwarding", "+");
     movePlayerB(
-        14,
-        32,
+        13,
+        31,
         "shared views in ways that that encourage discourse and not arguments",
         "+");
-    movePlayerB(10, 20, "researched statements before sharing", "+");
+    movePlayerB(9, 19, "researched statements before sharing", "+");
     //snakeMove
     movePlayerB(
-        37, 4, "got angry easily and vented anger on people online", "-");
-    movePlayerB(
-        98, 12, "didn’t log out after using a public/borrowed device", "-");
-    movePlayerB(96, 85, "didn't create strong passwords", "-");
-    movePlayerB(89, 77, "didn’t confirm the source of the video shared", "-");
-    movePlayerB(29, 9, "shared controversial articles", "-");
-    movePlayerB(72, 42, "shared a fake video", "-");
-    movePlayerB(25, 7, "didn't researched a statement before sharing", "-");
-    movePlayerB(58, 39, "shared a fake video", "-");
+        97, 11, "didn’t log out after using a public/borrowed device", "-");
+    movePlayerB(95, 84, "didn't create strong passwords", "-");
+    movePlayerB(88, 76, "didn’t confirm the source of the video shared", "-");
+    movePlayerB(28, 8, "shared controversial articles", "-");
+    movePlayerB(71, 41, "shared a fake video", "-");
+    movePlayerB(24, 6, "didn't researched a statement before sharing", "-");
+    movePlayerB(57, 38, "shared a fake video", "-");
     notifyListeners();
   }
 
@@ -246,37 +246,40 @@ class PlayerModel with ChangeNotifier {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(16.0))),
         content: Container(
-          height: MediaQuery.of(_ctx).size.height / 2.5,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                Icons.info,
-                size: 66,
-                color: move == "+" ? Colors.green : Colors.red,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Text(
-                  movemessage,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.info,
+                  size: 66,
+                  color: move == "+" ? Colors.green : Colors.red,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 13.0),
-                child: Center(
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 13.0),
                   child: Text(
-                    text,
+                    movemessage,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal),
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 13.0),
+                  child: Center(
+                    child: Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

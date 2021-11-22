@@ -1,5 +1,6 @@
 import 'package:educand/values/colors.dart';
 import 'package:educand/widgets/submitbutton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +28,7 @@ class _TestState extends State<Test> {
     setState(() {
       rank = preferences.getString("rank") ?? '-';
       score = preferences.getString("score") ?? '-';
-      testTaken = preferences.getString("total_test") ?? '-';
+      testTaken = preferences.getString("total_tests") ?? '-';
     });
   }
 
@@ -194,6 +195,7 @@ class _TestState extends State<Test> {
                 color: Colors.white24,
                 onPressed: () {
                   //skip
+                  _startAlertDialog();
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -391,5 +393,91 @@ class _TestState extends State<Test> {
   Future<Map> userProfile() async {
     Map userProfile = await FlutterSession().get("userProfile");
     return userProfile;
+  }
+
+  void _startAlertDialog() async {
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              16.0,
+            ),
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset(
+                'assets/images/leaderboard.png',
+                width: 80,
+                height: 80,
+              ),
+            ),
+            Text(
+              'Coming Soon',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20.0,
+                horizontal: 0.0,
+              ),
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                color: c8,
+                onPressed: () {
+                  //skip
+                  Navigator.of(context).pop();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 1.0,
+                  ),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 1.0,
+                      horizontal: 0.0,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(
+                              4.0,
+                            ),
+                            child: Text(
+                              "Go Back",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

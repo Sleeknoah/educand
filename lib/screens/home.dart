@@ -11,7 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'account.dart';
 import 'competition.dart';
 import 'mil.dart';
-import 'phrasematch.dart';
 import 'practice.dart';
 import 'test.dart';
 
@@ -58,46 +57,14 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.only(
                     top: 20,
-                    bottom: 10,
+                    bottom: 5,
                     right: 20,
+                    left: 20,
                   ),
                   child: buildAppBar(context),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                    left: 20,
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          'Hello',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        ' ',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Text(
-                        "${name},",
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                SizedBox(
+                  height: 5.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -261,13 +228,14 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.fade,
-                          child: PhraseMatch(),
-                        ),
-                      );
+                      _showToast(context);
+                      // Navigator.push(
+                      //   context,
+                      //   PageTransition(
+                      //     type: PageTransitionType.fade,
+                      //     child: PhraseMatch(),
+                      //   ),
+                      // );
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -386,7 +354,7 @@ class _HomeState extends State<Home> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(15),
                           ),
-                          color: Colors.white,
+                          color: Color(0xA0087C5),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
@@ -399,15 +367,15 @@ class _HomeState extends State<Home> {
                                 size: 23.0,
                               ),
                               SizedBox(
-                                width: 32,
+                                width: 16,
                               ),
                               Text(
                                 'SHARE THE APP',
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   color: c8,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ],
@@ -478,9 +446,46 @@ class _HomeState extends State<Home> {
   Row buildAppBar(BuildContext context) {
     return Row(
       children: <Widget>[
+        Container(
+          margin: const EdgeInsets.only(
+            bottom: 10.0,
+          ),
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  'Hello',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                ' ',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                "${name},",
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
         new Spacer(),
         Padding(
-          padding: const EdgeInsets.only(right: 0.0),
+          padding: const EdgeInsets.symmetric(
+            vertical: 10.0,
+          ),
           child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -494,14 +499,14 @@ class _HomeState extends State<Home> {
               child: Container(
                 margin: EdgeInsets.only(right: 8.0, bottom: 20.0),
                 decoration: BoxDecoration(
-                  color: c15,
+                  color: Color(0xFF0087C5),
                   shape: BoxShape.circle,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.person_rounded,
-                    size: 20,
+                    size: 16,
                     color: Colors.white,
                   ),
                 ),
